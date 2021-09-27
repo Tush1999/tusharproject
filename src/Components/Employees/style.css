@@ -1,0 +1,32 @@
+@import url(../../c.css);
+
+.link-clicked {
+  color: var(--blue);
+  width: 100px;
+  height: 100px;
+}
+.main-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.link-conference {
+  text-decoration: underline;
+}
+.link-conference:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
+.home-link {
+  color: var(--white);
+}
+.form-control {
+  width: 50%;
+}
+.space-table {
+  border-collapse: separate;
+  border-spacing: 0 20px;
+  margin-top: 10px;
+  padding-left: 46px;
+  padding-right: 51px;
+}

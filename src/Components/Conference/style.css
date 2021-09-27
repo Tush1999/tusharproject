@@ -1,0 +1,23 @@
+.link-clicked{
+    color:blue;
+    width:100px;
+    height:100px;
+}
+.main-div{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.link-conference{
+    text-decoration: underline;
+}
+.link-conference:hover{
+    color:blue;
+    text-decoration: underline;
+}
+.home-link{
+    color:white
+}
+.home-link:active{
+    color:white;
+}
