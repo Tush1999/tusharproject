@@ -5,11 +5,13 @@ import { withRouter } from "react-router";
 class Login extends Component {
 
   responseSuccess = (response) => {
+
     localStorage.setItem("auth","tushar")
     this.props.login(true)
     this.props.history.push('/home')
   };
   responseFailure=()=>{
+    console.log("failure")
     this.props.history.push('/login')
   }
   render() {
