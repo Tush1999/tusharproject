@@ -44,7 +44,7 @@ export default class MeetingDetail extends Component {
             <tr>
               <th scope="row">Meeting Code</th>
               <th>Conference ID</th>
-              <th scope="row">Event Name</th>
+              <th scope="row">Date</th>
               <th scope="row">Organizer Email</th>
               <th>Meeting Details</th>
             </tr>
@@ -63,7 +63,7 @@ export default class MeetingDetail extends Component {
                     {value.fields["Conference ID"]}
                   </NavLink>
                 </td>
-                <td>{value.fields["Event Name"]}</td>
+                <td>{value.fields["Date"]}</td>
                 <td>{value.fields["Organizer Email"]}</td>
                 <td>
                   <NavLink

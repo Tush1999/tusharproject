@@ -25,6 +25,11 @@ export default class Conferences extends Component {
         fetchNextPage();
       });
   }
+  firstName=(emailId)=>{
+    let regx = /\w+[\.]?\w+/gi;
+    let name = emailId.match(regx)[0];
+    return name;
+  }
   render() {
     return (
       <div className="rightbar">
@@ -43,7 +48,7 @@ export default class Conferences extends Component {
               <tr key={index}>
                 <td>
                   <NavLink
-                    to={`/employee/${value.fields["Participant Identifier"]}`}
+                    to={`/employee/${this.firstName(value.fields["Participant Identifier"])}`}
                     className="link-conference"
                   >
                     {value.fields["Participant Name"]}

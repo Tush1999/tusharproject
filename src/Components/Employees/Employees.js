@@ -35,7 +35,7 @@ export default class Employees extends Component {
         <div>
         <AirTable
           type="employee"
-          search={this.state.searchField}
+          search={this.state.searchField.toLowerCase()}
           pageSize={20}
           view={"Grid-view"}
           field1="Participant Name"

@@ -14,25 +14,27 @@ export default class AirTable extends Component {
   componentDidMount() {
     this.fetchData();
   }
-  componentDidUpdate() {
+  componentDidUpdate(nextProp,nextState) {
     if (this.props.search !== this.state.search) {
       this.setState({ search: this.props.search, data: [] });
       this.fetchData();
     }
+    console.log(nextState,"next state")
+    console.log(this.state,"prev state")
   }
   fetchData = () => {
-    var field2=`${this.props.field2}`
+    //var f="Participant Name"
+    //var field2=`${f}`
     //console.log(field)
     var pIdentifier = `'${this.props.search}'`;
-    console.log(pIdentifier,"search")
+    //console.log(pIdentifier,"search")
     base("Imported table")
       .select({
         view: "Grid view",
-        filterByFormula: "SEARCH(" + pIdentifier + ",{"+field2+"})",
+        filterByFormula: "SEARCH(" + pIdentifier + ",{Participant Name})",
         pageSize: this.props.pageSize,
       })
       .eachPage((records, fetchNextPage) => {
-        console.log(records)
         let array = records.map((record) => ({
           pField1: record.fields[this.props.field1],
           pField2: record.fields[this.props.field2],
@@ -44,12 +46,16 @@ export default class AirTable extends Component {
       });
   };
   handleNext = () => {
-    
+    if(typeof this.state.nextList!="string")
     this.state.nextList();
   };
-
+   shouldComponentUpdate=(prevProp,prevState)=>{
+    
+     return true;
+   }
 
   render() {
+    console.log(this.props.search,"search bar")
     const result = [];
     const map = new Map();
     for (const item of this.state.data) {
@@ -70,7 +76,12 @@ export default class AirTable extends Component {
             dataLength={this.state.data.length}
             next={this.handleNext}
             hasMore={true}
-            loader={<h4>Loading...</h4>}
+            loader={<div className="text-center">
+            <div className="spinner-grow text-danger text-center"  role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          </div>
+          }
           >
             <ShowData data={filteredData} type={this.props.type}/>
           </InfiniteScroll>
